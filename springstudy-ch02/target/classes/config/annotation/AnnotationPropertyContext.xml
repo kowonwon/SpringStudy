@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		
+	<!-- 프로퍼티 대치 변수 설정자(Property Placeholder Configurer)를 설정한다. -->
+	<context:property-placeholder 
+			location="classpath:config/props/datasource.properties" />
+
+	<!-- 
+		스프링 설정 파일에 지정한 base-package를 기준으로 컴포넌트(클래스)를 스캔하여 
+		@Componet가 붙은 클래스의 bean을 생성하고 @Autowired가 붙은 필드나
+		메서드를 찾아 그 필드나 메서드의 매개변수 타입과 일치하는 bean을 생성하여 주입해
+		주는 설정으로 스프링이 자동으로 bean을 발견하여 선언하고 <bean> 태그를
+		사용하지 않아도 정상적으로 annotation 기반으로 와이어링 할 수 있다는 의미이다. 
+		
+		<context:component-scan />은 <context:annotation-config />가
+		가지는 모든 기능을 포함하고 있기 때문에 <context:component-scan />을
+		사용하면 <context:annotation-config />는 설정할 필요가 없다. 	
+	-->
+	<context:component-scan base-package="com.springstudy.ch02.annotation" />
+
+	<!--
+		스프링 JDBC의 DriverManagerDataSource 타입의 Bean을 선언하고
+		위에서 프로퍼티 대치 변수 설정자로 지정한 properties 파일로 부터 읽어온
+		데이터를 대치 변수를 사용해 각 프로퍼티에 지정하고 있다.
+		p 네임스페이스를 이용해 dataSource의 각 속성에 데이터를 지정하고 있다.
+		@Component로 설정된 컴포넌트에 DriverManagerDataSource 타입의
+		필드나 setter 메서드 또는 생성자의 인수에 주입된다.  		
+	 -->	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		p:driverClassName="${db.driverClassName}" 
+		p:url="${db.url}"
+		p:username="${db.username}"
+		p:password="${db.password}" />
+</beans>
