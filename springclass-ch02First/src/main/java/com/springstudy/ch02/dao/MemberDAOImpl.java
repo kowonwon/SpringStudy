@@ -10,7 +10,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.springstudy.ch02.domain.Member;
 
-// 생성자 주입(Constructor Injection)
 public class MemberDAOImpl implements MemberDAO {
 
 	private Connection conn;

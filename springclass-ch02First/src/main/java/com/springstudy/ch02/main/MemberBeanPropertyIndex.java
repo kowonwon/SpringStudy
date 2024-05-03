@@ -12,7 +12,7 @@ public class MemberBeanPropertyIndex {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = new GenericXmlApplicationContext(
-				"classpath:config/MemberBenaPropertyContext.xml");
+				"classpath:config/MemberBeanPropertyContext.xml");
 		
 		MemberService service = ctx.getBean(MemberService.class);
 		List<Member> mList = service.getMemberList();
