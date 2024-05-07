@@ -17,7 +17,7 @@ public class AnnotationLifeCycle01 {
 	 * 할 클래스 타입을 지정하거나 클래스 명을 String으로 지정할 수 있다.
 	 **/		
 	protected static final Logger logger = 
-			Logger.getLogger(BeanLifeCycle01.class);
+			Logger.getLogger(AnnotationLifeCycle01.class);
 	
 	/* 아래와 같이 commons-logging 라이브러리를 log4j 설정에 맞게 로깅
 	 * 처리를 할 수도 있다. org.apache.commons.logging.LogFactory 

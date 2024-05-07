@@ -33,6 +33,7 @@
 	<logger name="com.springstudy.ch02" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="stdout" />
+		<appender-ref ref="file" />
 	</logger>	
 
 	<!-- 루트 카테고리를 설정한다. -->

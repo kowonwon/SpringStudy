@@ -19,6 +19,7 @@
 			base-package="com.springstudy.ch02.lifecycle"  />
 	
 	<!-- Annotation으로 bean에 주입될 기본형 데이터와 String 데이터 -->
+	<!-- Integer age = new Integer(37);과 같음. -->
 	<bean id="age" class="java.lang.Integer" c:_0="37" />
 	<bean id="name" class="java.lang.String" c:_0="강감찬" />
 </beans>

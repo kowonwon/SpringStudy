@@ -1,2 +1,38 @@
-[2022-12-09 17:57:12,383]WARN - AbstractApplicationContext.refresh{546} - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberDAO' defined in class path resource [config/MemberBeanConstructorContext.xml]: Cannot resolve reference to bean 'dataSource' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [config/MemberBeanConstructorContext.xml]: Error setting property values; nested exception is org.springframework.beans.PropertyBatchUpdateException; nested PropertyAccessExceptions (1) are:
-PropertyAccessException 1: org.springframework.beans.MethodInvocationException: Property 'driverClassName' threw exception; nested exception is java.lang.IllegalStateException: Could not load JDBC driver class [com.mysql.cj.jdbc.Driver]
+[2024-05-07 10:50:02,788]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 10:50:03,145]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 10:50:03,146]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 10:50:03,146]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 10:50:03,151]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 10:50:03,152]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 10:50:03,152]DEBUG - BeanLifeCycle01.main{97} - main() 종료
+[2024-05-07 10:50:12,208]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 10:50:12,650]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 10:50:12,651]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 10:50:12,652]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 10:50:12,658]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 10:50:12,658]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 10:50:12,658]DEBUG - BeanLifeCycle01.main{97} - main() 종료
+[2024-05-07 10:52:41,167]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 10:52:51,654]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 10:52:51,990]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 10:52:51,991]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 10:52:51,992]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 10:52:51,997]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 10:52:51,998]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 10:52:51,998]DEBUG - BeanLifeCycle01.main{97} - main() 종료
+[2024-05-07 11:00:09,618]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 11:00:10,009]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 11:00:10,010]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 11:00:10,011]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 11:00:10,016]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 11:00:10,016]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 11:00:10,017]DEBUG - BeanLifeCycle01.main{97} - main() 종료
+[2024-05-07 11:00:48,322]DEBUG - AnnotationLifeCycle01.main{96} - main() 시작
+[2024-05-07 11:00:48,810]WARN - AbstractApplicationContext.refresh{546} - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'annotationLifeCycle01': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire method: public void com.springstudy.ch02.lifecycle.AnnotationLifeCycle01.setAge(int); nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [int] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {}
+[2024-05-07 16:05:24,551]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 16:05:25,002]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 16:05:25,003]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 16:05:25,003]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 16:05:25,009]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 16:05:25,010]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 16:05:25,010]DEBUG - BeanLifeCycle01.main{97} - main() 종료
