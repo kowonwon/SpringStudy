@@ -36,3 +36,10 @@
 [2024-05-07 16:05:25,009]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
 [2024-05-07 16:05:25,010]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
 [2024-05-07 16:05:25,010]DEBUG - BeanLifeCycle01.main{97} - main() 종료
+[2024-05-07 21:14:10,055]DEBUG - BeanLifeCycle01.main{79} - main() 시작
+[2024-05-07 21:14:11,115]DEBUG - BeanLifeCycle01.beanInit{44} - BeanLifeCycle01 - initMethod 시작
+[2024-05-07 21:14:11,119]DEBUG - BeanLifeCycle01.beanInit{45} - name : 이순신, age : 35
+[2024-05-07 21:14:11,119]DEBUG - BeanLifeCycle01.beanInit{52} - BeanLifeCycle01 - initMethod 종료
+[2024-05-07 21:14:11,137]DEBUG - BeanLifeCycle01.beanDestroy{65} - BeanLifeCycle01 - Destroy 시작
+[2024-05-07 21:14:11,137]DEBUG - BeanLifeCycle01.beanDestroy{71} - BeanLifeCycle01 - Destroy 종료
+[2024-05-07 21:14:11,138]DEBUG - BeanLifeCycle01.main{97} - main() 종료

@@ -1,4 +1,4 @@
-package com.springstudy.ch02.dao;
+package com.springstudy.ch02.annotation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Repository;
 
+import com.springstudy.ch02.dao.ProductDAO;
 import com.springstudy.ch02.domain.Product;
 
+@Repository
 public class ProductDAOImpl implements ProductDAO {
 
 	private Connection conn;
@@ -20,11 +24,13 @@ public class ProductDAOImpl implements ProductDAO {
 	public ProductDAOImpl() {}
 	
 	// 셋터 주입
+	@Autowired
 	public void setDataSource(DriverManagerDataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
 	// 생성자 주입
+	// @Autowired
 	public ProductDAOImpl(DriverManagerDataSource dataSource) {
 		this.dataSource = dataSource;
 	}

@@ -11,13 +11,7 @@
 	<context:property-placeholder
 		location="classpath:config/props/datasource.properties" />
 		
-	<bean id="productDAO" class="com.springstudy.ch02.dao.ProductDAOImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	
-	<bean id="productService"
-		class="com.springstudy.ch02.service.ProductServiceImplProperty"
-		p:productDAO-ref="productDAO" />
+	<context:component-scan base-package="com.springstudy.ch02.annotation" />
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"

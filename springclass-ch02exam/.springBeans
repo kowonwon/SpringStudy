@@ -9,6 +9,8 @@
 	<configs>
 		<config>src/main/resources/config/ProductBeanConstructorContext.xml</config>
 		<config>src/main/resources/config/ProductBeanPropertyContext.xml</config>
+		<config>src/main/resources/config/annotation/AnnotationConstructorContext.xml</config>
+		<config>src/main/resources/config/annotation/AnnotationPropertyContext.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
