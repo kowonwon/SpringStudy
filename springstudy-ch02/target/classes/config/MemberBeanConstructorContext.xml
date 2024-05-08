@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- 프로퍼티 대치 변수 설정자(Property Placeholder Configurer)를 설정한다. -->
+	<context:property-placeholder 
+			location="classpath:config/props/datasource.properties" />
+	
+	<!-- 
+		MemberDAO 타입의 Bean을 선언하고 DriverManagerDataSource 객체를 
+		와이어링(wiring) 한다. 와이어링이란 객체간의 관계를 형성하는 것을 말한다.
+		스프링에서 객체간의 관계를 형성하는 것은 의존성 주입을 의미하며 여기서는 
+		DriverManagerDataSource 객체를 MemberDaoImpl 클래스의 
+		생성자를 이용해  스프링 DI 컨테이너가 주입해 준다.  
+	-->
+	<bean id="memberDAO" class="com.springstudy.ch02.dao.MemberDAOImpl">
+		<constructor-arg ref="dataSource" />
+	</bean>
+	
+	<!-- 
+		MemberService 타입의 Bean을 선언하고 MemberDAO 타입의 객체를
+		MemberServiceImplConstructor 클래스의 생성자를 통해 주입한다.
+		c 네임스페이스를 이용해 MemberDAO 객체를 생성자 주입받고 있다.
+	-->
+	<bean id="memberService" 
+		class="com.springstudy.ch02.service.MemberServiceImplConstructor" 
+		c:memberDAO-ref="memberDAO"/>
+	
+	<!--
+		스프링 JDBC의 DriverManagerDataSource 타입의 Bean을 선언하고
+		위에서 프로퍼티 대치 변수 설정자로 지정한 properties 파일로 부터 읽어온
+		데이터를 대치 변수를 사용해 dataSource의 각 프로퍼티에 지정하고 있다.
+	 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${db.driverClassName}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd" >
+	
+	<!-- 
+		<bean> 태그의 init-method 속성은 초기화 콜백 메서드를 지정하는 속성으로
+		스프링이 bean 설정을 마친 후 바로 init-method에 지정된 초기화 콜백 메서드를
+		호출해야 한다고 스프링에게 알려주는 역할을 한다. 또한 destroy-method 속성은
+		스프링이 bean을 소멸시키기 직전에 destroy-method에 지정된 소멸화 메서드를
+		호출해야 한다고 스프링에게 알려주는 역할을 한다. 
+		init-method나 destroy-method에 지정하는 메서드는 정해져 있는 것이 아니라
+		초기화 또는 소멸화 메서드로 사용할 메서드를 작성하고 그 이름을 지정하면 된다.
+	-->
+	<bean id="beanInit01" 
+		class="com.springstudy.ch02.lifecycle.BeanLifeCycle01"
+		init-method="beanInit" destroy-method="beanDestroy">
+		<property name="name" value="이순신" />
+		<property name="age" value="35" />
+	</bean>
+</beans>

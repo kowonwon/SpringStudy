@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 980px;
+	margin: 0px auto;
+	font-size: 12px;
+}
+
+.clear {
+	clear: both;
+}
+
+/* 링크 설정 */
+a:link {
+	text-decoration: none;
+	color: #333;	
+}
+ a:visited {
+	text-decoration: none;
+	color: #333;
+}
+a:hover {
+	text-decoration: underline;	
+	color: red;	
+}
+a:active {
+	text-decoration: none;
+	color: blue;
+}
+
+/* header */
+header { 
+	margin-top: 20px; 
+	border-bottom: 1px dashed blue;
+	height: 80px; 
+}
+header img { border: none; }
+header #logo {
+	margin-left: 10px;
+	float: left;
+}
+header #header_link {
+	float: right;
+	margin-right: 10px;	
+	width: 500px;	
+}
+header #header_link span {
+	display: inline-block;
+	padding: 0 8px;	
+	border-right: 1px solid #999;
+}
+header #header_link ul { float: right; list-style: none; }
+header #header_link li {
+	float: left;
+	padding: 0 8px;	
+	border-right: 1px solid #999;
+}
+header #header_link ul li.no_line { border-right: none; }
+
+/* footer */
+footer {	
+	border-top: 1px dotted blue;
+}
+footer #footer_info {
+	margin: 10px auto;	
+	line-height: 1.5em;	
+	text-align: center;
+	width: 600px;
+}
+
+/* content */
+article{
+	margin: 30px auto 0px;	
+	height: 750px;
+}
+
+/* 명준 intro 페이지 */
+#photo, #comment, h1 {
+	width: 400px;
+	margin: 50px auto;
+}
+#img {
+	width: 400px;
+	border-radius: 20px 20px;
+	box-shadow: 5px 5px 5px #ACACAC;
+}
+
+/* 명준 detail 페이지 */
+#bigPhoto, #bigComment, #bigH1 {
+	width: 600px;
+	margin: 50px auto;
+}
+#bigImg {
+	width: 600px;
+	border-radius: 30px 30px;
+	box-shadow: 7px 7px 7px #ACACAC;
+}

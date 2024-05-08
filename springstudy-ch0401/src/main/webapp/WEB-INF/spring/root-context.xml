@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">	
+	<!-- 
+		Annotation 기법을 이용한 Controller 클래스가 의존하는
+		Service 계층의 클래스와 DataAccess 계층의 클래스를 스프링 빈으로 설정
+		
+		이외에도 스프링 Bean 설정 파일을 분할하여 작성하였다면 import를 통해
+		아래와 같이 이 설정 파일에 포함 시킬 수 있다.
+		
+		<import resource="classpath:datasource/datasource.xml" />	 
+	-->		
+	<!-- 
+		## Service 정의하기 ##
+		## Dao 정의하기 ##
+		servlet-context.xml 파일에 <context:component-scan />을 적용했기
+		때문에 Spring MVC Annotation 기반의 Bean을 선언하고 검색하게 되므로
+		별도로 Service 클래스와 Dao 클래스를 이 Bean 설정 파일에 정의하지 않고
+		서비스 클래스에는 @Service 애노테이션과 Dao 클래스에는 @Repository
+		애노테이션을 적용시키면 Spring DI 컨테이터가 Bean을 스캔해 등록한다. 
+	-->		
+</beans>
