@@ -24,7 +24,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.springstudy.practice.domain" />
+	<context:component-scan base-package="com.springstudy.practice" />
 	
 	<view-controller path="/writeForm" view-name="writeForm" />
 	

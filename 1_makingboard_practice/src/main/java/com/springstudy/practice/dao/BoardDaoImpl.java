@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.springstudy.practice.domain.Board;
 
+@Repository
 public class BoardDaoImpl implements BoardDao{
 	private final String NAME_SPACE = "com.springstudy.practice.mapper.BoardMapper";
 	

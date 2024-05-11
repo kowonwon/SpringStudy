@@ -20,15 +20,18 @@
 	  - http://blog.mybatis.org/
 	  - http://www.mybatis.org/mybatis-3/ko/index.html
 -->
-<mapper namespace="com.springstudy.practice.mapper.BoardMapper">
+
+	<mapper namespace="com.springstudy.practice.mapper.BoardMapper" >
+
 	<select id="boardList" resultMap="boardResultMap" resultType="Board">
 		SELECT
 			*
-		FROM springbbs
+		FROM
+		springbbs
 		ORDER BY no DESC
 	</select>
 
-	<resultMap id="boardResultMAp" type="Board">
+	<resultMap id="boardResultMap" type="Board">
 		<id property="no" column="no" />
 		<result property="title" column="title" />
 		<result property="writer" column="writer" />
