@@ -22,6 +22,13 @@
 -->
 
 	<mapper namespace="com.springstudy.practice.mapper.BoardMapper" >
+	
+	<select id="getboard" resultType="Board" resultMap="boardResultMap">
+		SELECT
+			*
+		FROM springbbs
+		WHERE no = #{no}
+	</select>
 
 	<select id="boardList" resultMap="boardResultMap" resultType="Board">
 		SELECT

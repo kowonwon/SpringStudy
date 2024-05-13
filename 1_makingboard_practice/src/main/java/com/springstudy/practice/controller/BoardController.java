@@ -22,6 +22,13 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
+	@RequestMapping("/boardDetail")
+	public String boardDetail(Model model, int no) {
+		Board board = boardService.getBoard(no);
+		model.addAttribute("board", board);
+		return "boardDetail";
+	}
+	
 	//@GetMapping({"/boardList", "/list"})
 	@RequestMapping(value={"/boardList", "/list"}, method=RequestMethod.GET)
 	public String boardList(Model model) {
@@ -31,4 +38,6 @@ public class BoardController {
 		
 		return "boardList";
 	}
+	
+	
 }

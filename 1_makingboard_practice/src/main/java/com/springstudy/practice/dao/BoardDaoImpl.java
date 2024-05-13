@@ -26,7 +26,7 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public Board getBoard(int no) {
-		return null;
+		return sqlSession.selectOne(NAME_SPACE + ".getBoard", no);
 	}
 
 	@Override

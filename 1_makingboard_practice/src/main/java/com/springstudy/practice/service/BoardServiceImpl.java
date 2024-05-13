@@ -25,7 +25,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Board getBoard(int no) {
-		return null;
+		return boardDao.getBoard(no);
 	}
 
 	@Override
