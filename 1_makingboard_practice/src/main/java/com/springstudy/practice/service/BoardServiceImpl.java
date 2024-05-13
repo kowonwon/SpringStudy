@@ -29,12 +29,23 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public String isPassCheck(int no, String pass) {
-		return null;
+	public boolean isPassCheck(int no, String pass) {
+		boolean result = false;
+		String dbPass = boardDao.isPassCheck(no, pass);
+		if(dbPass.equals(pass)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
+	public void insertBoard(Board board) {
+		boardDao.insertBoard(board);
 	}
 
 	@Override
 	public void updateBoard(Board board) {
+		boardDao.updateBoard(board);
 	}
 
 	@Override

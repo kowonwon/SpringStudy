@@ -10,7 +10,9 @@ public interface BoardService {
 	
 	public abstract Board getBoard(int no);
 	
-	public String isPassCheck(int no, String pass);
+	public void insertBoard(Board board);
+	
+	public boolean isPassCheck(int no, String pass);
 	
 	public abstract void updateBoard(Board board);
 	

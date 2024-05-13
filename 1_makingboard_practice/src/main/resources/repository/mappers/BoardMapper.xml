@@ -23,11 +23,44 @@
 
 	<mapper namespace="com.springstudy.practice.mapper.BoardMapper" >
 	
-	<select id="getboard" resultType="Board" resultMap="boardResultMap">
+	<select id="updateBoard" parameterType="Board">
+		UPDATE springbbs
+			SET title = #{title}, content= #{content},
+					reg_date = SYSDATE()
+		WHERE no = #{no}
+	</select>
+	
+	<select id="isPassCheck" resultType="String">
 		SELECT
-			*
+			pass
 		FROM springbbs
 		WHERE no = #{no}
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board"
+		useGeneratedKeys="true" keyProperty="no">
+		INSERT INTO springbbs
+			(title,
+			writer,
+			content,
+			reg_date,
+			read_count,
+			pass,
+			file1)
+		VALUES(#{title},
+					#{writer},
+					#{content},
+					SYSDATE(),
+					#{readCount},
+					#{pass},
+					#{file1})
+	</insert>
+	
+	<select id="getBoard" resultMap="boardResultMap" resultType="Board">
+		SELECT 
+			* 
+		FROM springbbs 
+		WHERE no=#{no}
 	</select>
 
 	<select id="boardList" resultMap="boardResultMap" resultType="Board">

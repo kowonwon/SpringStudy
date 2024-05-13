@@ -28,14 +28,20 @@ public class BoardDaoImpl implements BoardDao{
 	public Board getBoard(int no) {
 		return sqlSession.selectOne(NAME_SPACE + ".getBoard", no);
 	}
+	
+	@Override
+	public void insertBoard(Board board) {
+		sqlSession.insert(NAME_SPACE + ".insertBoard", board); 
+	}
 
 	@Override
 	public String isPassCheck(int no, String pass) {
-		return null;
+		return sqlSession.selectOne(NAME_SPACE + ".isPassCheck", no);
 	}
 
 	@Override
 	public void updateBoard(Board board) {
+		sqlSession.update(NAME_SPACE + ".updateBoard", board);
 	}
 
 	@Override
