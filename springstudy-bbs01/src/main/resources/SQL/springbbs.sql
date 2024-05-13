@@ -41,3 +41,5 @@ COMMIT;
 SELECT * FROM springbbs ORDER BY no DESC;
 
 INSERT INTO springbbs (title,writer,content,reg_date, read_count, pass, file1) VALUES('안녕하세요', 'midas', '안녕하세요...', SYSDATE(), 0, '1234', null);
+
+SELECT * FROM springbbs WHERE no = 20;
