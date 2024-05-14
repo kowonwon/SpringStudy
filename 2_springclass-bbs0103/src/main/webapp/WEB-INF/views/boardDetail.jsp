@@ -13,6 +13,11 @@
 			<form name="checkForm" id="checkForm">
 				<input type="hidden" name="no" id="no" value="${board.no}" >
 				<input type="hidden" name="pass" id="rPass">
+				<input type="hidden" name="pageNum" value="${pageNum}">
+				<c:if test="${searchOption}">
+					<input type="hidden" name="type" value="${type}">
+					<input type="hidden" name="keyword" value="${keyword}">
+				</c:if>
 			</form>
 			<div class="row">
 				<div class="col">
@@ -59,8 +64,17 @@
 					&nbsp;&nbsp;
 					<input type="button" class="btn btn-danger" id="detailDelete" value="삭제하기" >
 					&nbsp;&nbsp;
-					<input type="button" class="btn btn-primary" value="목록보기" 
-						onclick="location.href='boardList'">
+					<!-- 검색에서 넘어온 경우 -->
+					<c:if test="${searchOption}">
+						<input type="button" class="btn btn-primary" value="목록보기" 
+							onclick="location.href='boardList?pageNum=${pageNum}&type=${type}&keyword=${keyword}'">
+					</c:if>
+					
+					<!-- 일반 게시 글 리스트에서 넘어온 경우 -->
+					<c:if test="${not searchOption}">
+						<input type="button" class="btn btn-primary" value="목록보기" 
+							onclick="location.href='boardList?pageNum=${pageNum}'">
+					</c:if>
 				</div>
 			</div>
 		</div>

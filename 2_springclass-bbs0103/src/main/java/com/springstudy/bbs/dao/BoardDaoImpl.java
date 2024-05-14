@@ -19,10 +19,12 @@ public class BoardDaoImpl implements BoardDao {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public List<Board> boardList(int startRow, int num) {
-		Map<String, Integer> params = new HashMap<String, Integer>();
+	public List<Board> boardList(int startRow, int num, String type, String keyword) {
+		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startRow", startRow);
 		params.put("num", num);
+		params.put("type", type);
+		params.put("keyword", keyword);
 		return sqlSession.selectList(NAME_SPACE + ".boardList", params);
 	}
 
@@ -52,8 +54,16 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public int getBoardCount() {
-		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount");
+	public int getBoardCount(String type, String keyword) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("type", type);
+		params.put("keyword", keyword);
+		
+		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount", params);
 	}
 
+	@Override
+	public void incrementReadCount(int no) {
+		sqlSession.update(NAME_SPACE + ".incrementReadCount", no);
+	}
 }

@@ -12,6 +12,7 @@
 		<form name="updateForm" action="updateProcess" id="updateForm" 
 			class="row g-3 border-primary" method="post">
 			<input type="hidden" name="no" value="${board.no}">
+			<input type="hidden" name="pageNum" value="${pageNum}">
 		  	<div class="col-4 offset-md-2">
 			    <label for="writer" class="form-label">글쓴이</label>
 			    <input type="text" class="form-control" name="writer"  id="writer" 
@@ -32,7 +33,7 @@
 	  		<div class="col-8 offset-md-2 text-center mt-5">
 			   <input type="submit" value="수정하기" class="btn btn-primary"/>
 					&nbsp;&nbsp;<input type="button" value="목록보기" 
-						onclick="location.href='boardList'" class="btn btn-primary"/>
+						onclick="location.href='boardList?pageNum=${pageNum}'" class="btn btn-primary"/>
 	  		</div>	
 		</form>
 	</div>
