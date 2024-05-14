@@ -1,12 +1,15 @@
 package com.springstudy.practice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.springstudy.practice.domain.Board;
 
 public interface BoardService {
+	
+	public abstract Board getBoard(int no, boolean isCount);
 
-	public abstract List<Board> boardList();
+	public abstract Map<String, Object> boardList(int pageNum);
 	
 	public abstract Board getBoard(int no);
 	

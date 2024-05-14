@@ -6,7 +6,11 @@ import com.springstudy.practice.domain.Board;
 
 public interface BoardDao {
 	
-	public abstract List<Board> boardList();
+	public abstract void incrementReadCount(int no);
+	
+	public abstract List<Board> boardList(int startRow, int num);
+	
+	public abstract int getBoardCount();
 	
 	public abstract Board getBoard(int no);
 	

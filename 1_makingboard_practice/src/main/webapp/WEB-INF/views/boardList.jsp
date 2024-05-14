@@ -50,7 +50,8 @@
 							<c:forEach var="b" items="${bList}">
 								<tr>
 									<td>${b.no}</td>
-									<td><a href="boardDetail?no=${b.no}" class="text-decoration-none link-dark">${b.title}</a></td>
+									<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
+									class="text-decoration-none link-dark">${b.title}</a></td>
 									<td>${b.writer}</td>
 									<td>${b.regDate}</td>
 									<td>${b.readCount}</td>
@@ -66,6 +67,36 @@
 						</c:if>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<nav>
+				  <ul class="pagination justify-content-center">
+					  <c:if test="${startPage > pageGroup}">
+					    <li class="page-item">
+					    	<a class="page-link" href="boardList?pageNum=${startPage - pageGroup}">Pre</a>
+					    </li>
+					  </c:if>
+					  <c:forEach var="i" begin="${startPage}" end="${endPage}">
+					  	<c:if test="${i == currentPage}">
+					    	<li class="page-item active">
+					    		<span class="page-link">${i}</span>
+					    	</li>
+					  	</c:if>
+					  	<c:if test="${i != currentPage}">
+						    <li class="page-item">
+						    	<a class="page-link" href="boardList?pageNum=${i}">${i}</a>
+						    </li>
+					  	</c:if>
+					  </c:forEach>
+					  <c:if test="${endPage < pageCount}">
+					  	<li class="page-item">
+					  		<a class="page-link" href="boardList?pageNum=${startPage + pageGroup}">Next</a>
+					  	</li>
+					  </c:if>
+				  </ul>
+				</nav>
 			</div>
 		</div>
 	</div>

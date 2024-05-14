@@ -2,6 +2,7 @@ package com.springstudy.practice.controller;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.springstudy.practice.domain.Board;
 import com.springstudy.practice.service.BoardService;
@@ -23,6 +25,42 @@ public class BoardController {
 	
 	private void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
+	}
+	
+	@RequestMapping("/update")
+	public String updateBoard(Model model, HttpServletResponse response,
+			PrintWriter out, int no, String pass,
+			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum) {
+		
+	}
+	
+	@RequestMapping("/boardDetail")
+	public String boardDetail(Model model, int no,
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+		Board board = boardService.getBoard(no, true);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "boardDetail";
+	}
+	
+	@RequestMapping({"/delete", "deleteBoard"})
+	public String deleteBoard(HttpServletResponse response,
+			PrintWriter out, int no, String pass) {
+		boolean result = boardService.isPassCheck(no, pass);
+		
+		if(! result) {
+			response.setContentType("text/html: charset=utf-8");
+			out.println("<script>");
+			out.println(" alert('비밀번호가 맞지 않습니다.');");
+			out.println(" history.back();");
+			out.println("</script>");
+			return null;
+		}
+		
+		boardService.deleteBoard(no);
+		return "redirect:boardList";
 	}
 	
 	@RequestMapping(value="/updateProcess", method=RequestMethod.POST)
@@ -77,10 +115,12 @@ public class BoardController {
 	
 	//@GetMapping({"/boardList", "/list"})
 	@RequestMapping(value={"/boardList", "/list"}, method=RequestMethod.GET)
-	public String boardList(Model model) {
-		List<Board> bList = boardService.boardList();
+	public String boardList(Model model,
+			@RequestParam(value="pageNum", required=false,
+			defaultValue="1") int pageNum) {
+		Map<String, Object> modelMap = boardService.boardList(pageNum);
 		
-		model.addAttribute("bList", bList);
+		model.addAllAttributes(modelMap);
 		
 		return "boardList";
 	}

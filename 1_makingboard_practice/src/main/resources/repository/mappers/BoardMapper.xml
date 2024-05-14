@@ -23,6 +23,16 @@
 
 	<mapper namespace="com.springstudy.practice.mapper.BoardMapper" >
 	
+	<update id="incrementReadCount">
+		UPDATE springbbs
+			SET read_count = read_count + 1
+		WHERE no = #{no}
+	</update>
+	
+	<select id="deleteBoard">
+		DELETE FROM spingbbs WHERE no = #{no}
+	</select>
+	
 	<select id="updateBoard" parameterType="Board">
 		UPDATE springbbs
 			SET title = #{title}, content= #{content},
@@ -63,12 +73,17 @@
 		WHERE no=#{no}
 	</select>
 
-	<select id="boardList" resultMap="boardResultMap" resultType="Board">
+	<select id="boardList" parameterType="hashmap" resultType="Board">
 		SELECT
-			*
-		FROM
-		springbbs
+			no, title, writer, content, reg_date AS regDate,
+			read_count AS readCount, pass, file1
+		FROM springbbs
 		ORDER BY no DESC
+		LIMIT #{startRow}, #{num}
+	</select>
+	
+	<select id="getBoardCount" resultType="int">
+		SELECT COUNT(*) FROM springbbs
 	</select>
 
 	<resultMap id="boardResultMap" type="Board">

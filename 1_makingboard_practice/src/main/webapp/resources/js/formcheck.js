@@ -1,4 +1,5 @@
 $(function() {
+
   $("#writeForm").on("submit", function() {
     if($("#writer").val().length <= 0) {
       alert("작성자를 입력해주세요.");
@@ -56,4 +57,17 @@ $(function() {
       return false;
     }
   })
+
+  $("#detailDelete").on("click", function() {
+		let pass = $("#pass").val();
+		if(pass.length <= 0) {
+			alert("비밀번호를 입력해 주세요");
+			return false;
+		}
+		
+		$("#rPass").val(pass);
+		$("#checkForm").attr("action", "delete");
+		$("#checkForm").attr("method", "post");
+		$("#checkForm").submit();
+	});
 })

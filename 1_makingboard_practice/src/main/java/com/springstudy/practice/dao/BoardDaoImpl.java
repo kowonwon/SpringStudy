@@ -1,6 +1,8 @@
 package com.springstudy.practice.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,25 @@ public class BoardDaoImpl implements BoardDao{
 	public void setSqlSession(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	@Override
+	public void incrementReadCount(int no) {
+		sqlSession.update(NAME_SPACE + ".incrementReadCount", no);
+	}
 
 	@Override
-	public List<Board> boardList() {
-		return sqlSession.selectList(NAME_SPACE + ".boardList");
+	public List<Board> boardList(int startRow, int num) {
+		
+		Map<String, Integer> params = new HashMap<String, Integer>();
+		params.put("startRow", startRow);
+		params.put("num", num);
+		
+		return sqlSession.selectList(NAME_SPACE + ".boardList", params);
+	}
+	
+	@Override
+	public int getBoardCount() {
+		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount");
 	}
 
 	@Override
@@ -46,5 +63,6 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void deleteBoard(int no) {
+		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
 	}
 }
