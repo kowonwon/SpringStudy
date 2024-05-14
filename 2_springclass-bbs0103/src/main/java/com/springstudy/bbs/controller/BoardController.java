@@ -31,7 +31,9 @@ public class BoardController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String delete(HttpServletResponse response, 
 			PrintWriter out, int no, String pass, RedirectAttributes reAttrs,
-			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+			@RequestParam(value="type", defaultValue="null") String type,
+			@RequestParam(value="keyword", defaultValue="null") String keyword) {
 		
 		boolean result = boardService.isPassCheck(no, pass);
 		
@@ -48,6 +50,11 @@ public class BoardController {
 		// 비밀번호가 맞으면 게시 글을 삭제
 		boardService.deleteBoard(no);
 		
+		if(!(type.equals("null") || keyword.equals("null"))) {
+			reAttrs.addAttribute("type", type);
+			reAttrs.addAttribute("keyword", keyword);
+		}
+		
 		// 삭제하기가 완료되면 게시글 리스트로 리다이렉트
 		reAttrs.addAttribute("pageNum", pageNum);
 		return "redirect:boardList";
@@ -57,7 +64,9 @@ public class BoardController {
 	@PostMapping("/updateProcess")
 	public String updateProcess(HttpServletResponse response,
 			PrintWriter out, Board board, RedirectAttributes reAttrs,
-			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+			@RequestParam(value="type", defaultValue="null") String type,
+			@RequestParam(value="keyword", defaultValue="null") String keyword) {
 		
 		boolean result = boardService.isPassCheck(board.getNo(), board.getPass());
 		
@@ -78,6 +87,12 @@ public class BoardController {
 		reAttrs.addAttribute("pageNum", pageNum);
 		reAttrs.addFlashAttribute("test", "1회성 파라미터");
 		
+		boolean searchOption = (type.equals("null") || keyword.equals("null")) ? false : true;
+				if(searchOption) {
+					reAttrs.addAttribute("type", type);
+					reAttrs.addAttribute("keyword", keyword);
+				}
+		
 		// 게시 글 수정이 끝나면 - 게시 글 리스트로 리다이렉트
 		// return "redirect:boardList?pageNum=" + pageNum;
 		return "redirect:boardList";
@@ -88,8 +103,9 @@ public class BoardController {
 	@PostMapping("/update")
 	public String updateBoard(Model model, HttpServletResponse response,
 			PrintWriter out, int no, String pass,
-			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
-		
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+			@RequestParam(value="type", defaultValue="null") String type,
+			@RequestParam(value="keyword", defaultValue="null") String keyword) {
 		
 		boolean result = boardService.isPassCheck(no, pass);
 		
@@ -107,6 +123,14 @@ public class BoardController {
 		Board board = boardService.getBoard(no, false);
 		model.addAttribute("board", board);
 		model.addAttribute("pageNum", pageNum);
+		
+		boolean searchOption = (type.equals("null") || keyword.equals("null")) ? false : true;
+		
+		model.addAttribute("searchOption", searchOption);
+		if(searchOption) {
+			model.addAttribute("type", type);
+			model.addAttribute("keyword", keyword);
+		}
 		
 		return "updateForm";
 	}
