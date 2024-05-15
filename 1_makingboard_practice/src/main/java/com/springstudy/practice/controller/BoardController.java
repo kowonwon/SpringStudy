@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springstudy.practice.domain.Board;
 import com.springstudy.practice.service.BoardService;
@@ -27,11 +28,47 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 	
+	@RequestMapping(value="/updateProcess", method=RequestMethod.POST)
+	public String updateBoard(HttpServletResponse response,
+			PrintWriter out, Board board, RedirectAttributes reAttrs,
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+		boolean result = boardService.isPassCheck(board.getNo(), board.getPass());
+		
+		if(! result) {
+			response.setContentType("text/html: charset=utf-8");
+			out.println("<script>");
+			out.println(" alert('비밀번호가 맞지 않습니다.');");
+			out.println(" history.back();");
+			out.println("</script>");
+			return null;
+		}
+		boardService.updateBoard(board);
+		reAttrs.addAttribute("pageNum", pageNum);
+		return "redirect:boardList";
+	}
+		
+	
 	@RequestMapping("/update")
 	public String updateBoard(Model model, HttpServletResponse response,
 			PrintWriter out, int no, String pass,
 			@RequestParam(value="pageNum", required=false, defaultValue="1") int pageNum) {
+		boolean result = boardService.isPassCheck(no, pass);
 		
+		if(! result) {
+			response.setContentType("text/html: charset=utf-8");
+			out.println("<script>");
+			out.println(" alert('비밀번호가 맞지 않습니다.');");
+			out.println(" history.back();");
+			out.println("</script>");
+			
+			return null;
+		}
+		
+		Board board = boardService.getBoard(no, false);
+		model.addAttribute("board", board);
+		model.addAttribute("pageNum", pageNum);
+		
+		return "updateForm";
 	}
 	
 	@RequestMapping("/boardDetail")
@@ -63,54 +100,10 @@ public class BoardController {
 		return "redirect:boardList";
 	}
 	
-	@RequestMapping(value="/updateProcess", method=RequestMethod.POST)
-	public String updateBoard(HttpServletResponse response,
-			PrintWriter out, Board board) {
-		boolean result = boardService.isPassCheck(board.getNo(), board.getPass());
-		
-		if(!result) {
-			response.setContentType("text/html; charset=utf-8");
-			out.println("<script>");
-			out.println(" alert('비밀번호가 맞지 않습니다.');");
-			out.println(" history.back();");
-			out.println("</script>");
-			return null;
-		}
-		
-		boardService.updateBoard(board);
-		return "redirect:boardList";
-	}
-	
-	@RequestMapping(value="/update")
-	public String updateBoard(Model model, HttpServletResponse response,
-			PrintWriter out, int no, String pass) {
-		boolean result = boardService.isPassCheck(no, pass);
-		
-		if(!result) {
-			response.setContentType("text/html; charset=utf-8");
-			out.println("<script>");
-			out.println(" alert('비밀번호가 맞지 않습니다.');");
-			out.println(" history.back();");
-			out.println("</script>");
-			return null;
-		}
-		
-		Board board = boardService.getBoard(no);
-		model.addAttribute("board", board);
-		return "updateForm";
-	}
-	
 	@RequestMapping(value="/writeProcess", method=RequestMethod.POST)
 	public String insertBoard(Board board) {
 		boardService.insertBoard(board);
 		return "redirect:boardList";
-	}
-	
-	@RequestMapping("/boardDetail")
-	public String boardDetail(Model model, int no) {
-		Board board = boardService.getBoard(no);
-		model.addAttribute("board", board);
-		return "boardDetail";
 	}
 	
 	//@GetMapping({"/boardList", "/list"})
@@ -124,6 +117,4 @@ public class BoardController {
 		
 		return "boardList";
 	}
-	
-	
 }
