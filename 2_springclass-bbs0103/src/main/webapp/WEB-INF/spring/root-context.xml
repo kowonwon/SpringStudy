@@ -26,6 +26,9 @@
 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
-		p:dataSource-ref="dataSource" />		
+		p:dataSource-ref="dataSource" />
+		
+	<bean id="multipartReolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 		
 </beans>
