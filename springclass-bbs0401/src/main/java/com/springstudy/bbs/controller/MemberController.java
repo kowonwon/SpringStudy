@@ -28,7 +28,13 @@ public class MemberController {
 	@RequestMapping("/overlapIdCheck")
 	public String overlapIdCheck(Model model, String id) {
 		
-		return "member/overlapIdCheck";
+		boolean overlap = memberService.overlapidCheck(id);
+		model.addAttribute("overlap", overlap);
+		model.addAttribute("id", id);
+		
+		// viewResolver의 prefix + 반환하는 view의 이름 + suffix
+		// /WEB-INF/index.jsp?body=views/ + member/overlapIdCheck + .jsp 
+		return "forward:WEB-INF/views/member/overlapIdCheck.jsp";
 	}
 	
 	// login 요청을 처리하는 메서드

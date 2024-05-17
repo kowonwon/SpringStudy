@@ -30,7 +30,7 @@
 	</update>
 	
 	<select id="deleteBoard">
-		DELETE FROM spingbbs WHERE no = #{no}
+		DELETE FROM springbbs WHERE no = #{no}
 	</select>
 	
 	<select id="updateBoard" parameterType="Board">

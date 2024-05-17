@@ -44,6 +44,7 @@ public class BoardController {
 		}
 		boardService.updateBoard(board);
 		reAttrs.addAttribute("pageNum", pageNum);
+		//reAttrs.addFlashAttribute("test", "1회용 파라미터 받음 - test");
 		return "redirect:boardList";
 	}
 		
@@ -84,7 +85,10 @@ public class BoardController {
 	
 	@RequestMapping({"/delete", "deleteBoard"})
 	public String deleteBoard(HttpServletResponse response,
-			PrintWriter out, int no, String pass) {
+			PrintWriter out, int no, String pass,
+			RedirectAttributes reAttrs,
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+		
 		boolean result = boardService.isPassCheck(no, pass);
 		
 		if(! result) {
@@ -97,6 +101,9 @@ public class BoardController {
 		}
 		
 		boardService.deleteBoard(no);
+		
+		reAttrs.addAttribute("pageNum", pageNum);
+		// reAttrs.addFlashAttribute("test", "1회용 파라미터 받음 - test");
 		return "redirect:boardList";
 	}
 	

@@ -40,4 +40,20 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.getMember(id);
 	}
 
+	@Override
+	public boolean overlapidCheck(String id) {
+		Member member = memberDao.getMember(id);
+		if(member == null) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public void addMember(Member member) {
+		// 회원이 입력한 정보에서 중요정보는 비식별화 - 비밀번호를 암호화
+		member.setPass(passwordEncoder.encode(member.getPass()));
+		memberDao.addMember(member);
+	}
+
 }
