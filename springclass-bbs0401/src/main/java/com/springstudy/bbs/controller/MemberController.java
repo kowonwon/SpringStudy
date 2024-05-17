@@ -24,6 +24,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	// 회원 가입 폼에서 들어오는 중복 아이디 체크 요청을 처리하는 메서드
+	@RequestMapping("/overlapIdCheck")
+	public String overlapIdCheck(Model model, String id) {
+		
+		return "member/overlapIdCheck";
+	}
+	
 	// login 요청을 처리하는 메서드
 	@PostMapping("/login")
 	public String login(Model model, 

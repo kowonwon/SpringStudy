@@ -1,8 +1,11 @@
 package com.springstudy.bbs.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +37,35 @@ public class BoardController {
 	// BoardService 주입
 	@Autowired
 	private BoardService boardService;
+	
+	// 파일 다운로드 요청을 처리하는 메서드
+	@GetMapping("/fileDownload")
+	public void download(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
+		String fileName = request.getParameter("fileName");
+		System.out.println("fileName : " + fileName);
+		String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
+		
+		File file = new File(filePath, fileName);
+		System.out.println("file.getName() : " + file.getName());
+		
+		response.setContentType("application/download; charset=UTF-8");
+		response.setContentLength((int) file.length());
+		
+		fileName = URLEncoder.encode(file.getName(), "UTF-8");
+		System.out.println("다운로드 fileName : " + fileName);
+		
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
+		response.setHeader("Content-Transfer-Encoding", "binary");
+		OutputStream out = response.getOutputStream();
+		FileInputStream fis = new FileInputStream(file);
+		
+		FileCopyUtils.copy(fis, out);
+		if(fis != null) {
+			fis.close();
+		}
+		out.flush();
+	}
 	
 	// 게시 글 삭제하기 요청을 처리하는 메서드
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
