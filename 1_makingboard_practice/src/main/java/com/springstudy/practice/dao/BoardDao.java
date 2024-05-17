@@ -8,9 +8,9 @@ public interface BoardDao {
 	
 	public abstract void incrementReadCount(int no);
 	
-	public abstract List<Board> boardList(int startRow, int num);
+	public abstract List<Board> boardList(int startRow, int num, String type, String keyword);
 	
-	public abstract int getBoardCount();
+	public abstract int getBoardCount(String type, String keyword);
 	
 	public abstract Board getBoard(int no);
 	

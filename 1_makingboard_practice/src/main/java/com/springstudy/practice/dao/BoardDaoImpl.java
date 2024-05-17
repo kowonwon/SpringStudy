@@ -27,18 +27,24 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public List<Board> boardList(int startRow, int num) {
+	public List<Board> boardList(int startRow, int num, String type, String keyword) {
 		
-		Map<String, Integer> params = new HashMap<String, Integer>();
+		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("startRow", startRow);
 		params.put("num", num);
+		params.put("type", type);
+		params.put("keyword", keyword);
 		
 		return sqlSession.selectList(NAME_SPACE + ".boardList", params);
 	}
 	
 	@Override
-	public int getBoardCount() {
-		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount");
+	public int getBoardCount(String type, String keyword) {
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("type", type);
+		params.put("keyword", keyword);
+		return sqlSession.selectOne(NAME_SPACE + ".getBoardCount", params);
 	}
 
 	@Override
@@ -65,4 +71,5 @@ public class BoardDaoImpl implements BoardDao{
 	public void deleteBoard(int no) {
 		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
 	}
+
 }
