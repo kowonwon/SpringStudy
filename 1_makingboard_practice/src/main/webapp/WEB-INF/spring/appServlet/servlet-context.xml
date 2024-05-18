@@ -30,5 +30,8 @@
 	
 	<view-controller path="/" view-name="redirect:/boardList" />
 	<redirect-view-controller path="/index" redirect-url="/boardList" />
+	<redirect-view-controller path="/default" redirect-url="/boardList"/>
+	
+	<view-controller path="loginForm" view-name="loginForm" />
 	
 </beans:beans>

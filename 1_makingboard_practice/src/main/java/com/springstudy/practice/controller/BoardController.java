@@ -120,7 +120,9 @@ public class BoardController {
 	public String deleteBoard(HttpServletResponse response,
 			PrintWriter out, int no, String pass,
 			RedirectAttributes reAttrs,
-			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+			@RequestParam(value="type", defaultValue="null") String type,
+			@RequestParam(value="keyword", defaultValue="null") String keyword) throws Exception {
 		
 		boolean result = boardService.isPassCheck(no, pass);
 		
@@ -133,10 +135,18 @@ public class BoardController {
 			return null;
 		}
 		
+		boolean searchOption = (type.equals("null") || keyword.equals("null")) ? false : true;
+		
 		boardService.deleteBoard(no);
 		
 		reAttrs.addAttribute("pageNum", pageNum);
-		// reAttrs.addFlashAttribute("test", "1회용 파라미터 받음 - test");
+		reAttrs.addAttribute("searchOption", searchOption);
+		
+		if(searchOption) {
+			reAttrs.addAttribute("type", type);
+			reAttrs.addAttribute("keyword", keyword);
+		}
+		
 		return "redirect:boardList";
 	}
 	
