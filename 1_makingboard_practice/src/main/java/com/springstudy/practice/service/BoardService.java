@@ -9,7 +9,7 @@ public interface BoardService {
 	
 	public abstract Board getBoard(int no, boolean isCount);
 
-	public abstract Map<String, Object> boardList(int pageNum);
+	public abstract Map<String, Object> boardList(int pageNum, String type, String keyword);
 	
 	public abstract Board getBoard(int no);
 	
