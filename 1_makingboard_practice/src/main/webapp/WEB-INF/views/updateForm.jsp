@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="resources/js/formcheck.js"></script>
 <!-- content -->
 <div class="row my-5" id="global-content">
@@ -13,6 +14,10 @@
 			class="row g-3 border-primary" method="post">
 			<input type="hidden" name="no" value="${board.no}">
 			<input type="hidden" name="pageNum" value="${pageNum}" />
+			<c:if test="${searchOption}">
+				<input type="hidden" name="pageNum" value="${type}" />
+				<input type="hidden" name="pageNum" value="${keyword}" />
+			</c:if>
 	  	<div class="col-4 offset-md-2">
 		    <label for="writer" class="form-label">글쓴이</label>
 		    <input type="text" class="form-control" name="writer"  id="writer" 
@@ -32,8 +37,14 @@
 	  		</div>	
 	  		<div class="col-8 offset-md-2 text-center mt-5">
 			   <input type="submit" value="수정하기" class="btn btn-primary"/>
-					&nbsp;&nbsp;<input type="button" value="목록보기" 
-						onclick="location.href='boardList?pageNum=${pageNum}'" class="btn btn-primary"/>
+			   <c:if test="${not searchOption}">
+						&nbsp;&nbsp;<input type="button" value="목록보기" 
+							onclick="location.href='boardList?pageNum=${pageNum}'" class="btn btn-primary"/>
+			   </c:if>
+			   <c:if test="${ searchOption}">
+						&nbsp;&nbsp;<input type="button" value="목록보기" 
+							onclick="location.href='boardList?pageNum=${pageNum}&type=${type}&keyword=${keyword}'" class="btn btn-primary"/>
+			   </c:if>
 	  		</div>	
 		</form>
 	</div>

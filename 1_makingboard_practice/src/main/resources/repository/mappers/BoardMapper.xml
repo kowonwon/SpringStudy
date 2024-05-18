@@ -81,10 +81,10 @@
 		
 		<where>
 			<if test="type == 'title'">
-				title LIKE CONCAT('%', #{keyword], '%')
+				title LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'writer'">
-				writer LIKE CONCAT('%', #{keyword], '%')
+				writer LIKE CONCAT('%', #{keyword}, '%')
 			</if>
 			<if test="type == 'content'">
 				content LIKE CONCAT('%', #{keyword], '%')
@@ -99,15 +99,15 @@
 		SELECT COUNT(*) FROM springbbs
 		<where>
 			<if test="type == 'title'">
-				title LIKE CONCAT('%', #{keyword], '%')
+				title LIKE CONCAT('%', #{keyword},'%') 
 			</if>
 			<if test="type == 'writer'">
-				writer LIKE CONCAT('%', #{keyword], '%')
+				writer LIKE CONCAT('%', #{keyword},'%') 
 			</if>
 			<if test="type == 'content'">
-				content LIKE CONCAT('%', #{keyword], '%')
+				content LIKE CONCAT('%', #{keyword},'%') 
 			</if>
-		</where>
+		</where>	
 	</select>
 
 	<resultMap id="boardResultMap" type="Board">
