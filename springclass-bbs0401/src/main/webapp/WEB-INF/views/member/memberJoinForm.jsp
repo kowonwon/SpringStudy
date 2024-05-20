@@ -134,7 +134,7 @@
 						<div class="col-md-3">
 							<div class="form-check">
 								<input type="radio" class="form-check-input" name="emailGet" id="emailNo" value="false">
-								<label class="form-check-label" for="emailNo">수신않함</label>
+								<label class="form-check-label" for="emailNo">수신안함</label>
 							</div>
 						</div>	
 					</div>					

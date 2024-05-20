@@ -31,6 +31,10 @@
 	      <form action="login" method="post">
 		      <div class="modal-body">
 		        <div class="mb-3">
+		        	<label for="userId" class="col-form-label fw-bold">아이디 : </label>
+		        	<input type="text" class="form-control" id="userId" name="userId">
+		        </div>
+		        <div class="mb-3">
 		        	<label for="pass" class="col-form-label fw-bold">비밀번호 : </label>
 		        	<input type="password" class="form-control" id="pass" name="pass">
 		        </div>

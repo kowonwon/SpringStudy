@@ -24,6 +24,35 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@RequestMapping("/memberUpdateForm")
+	public String memberUpdateForm() {
+		
+		return "member/memberUpdateForm";
+	}
+	
+	@RequestMapping("/joinResult")
+	public String joinResult(Member member, String pass1, String emailId, String emailDomain,
+			String mobile1, String mobile2, String mobile3,
+			String phone1, String phone2, String phone3,
+			@RequestParam(value="emailGet", defaultValue="false") boolean emailGet) {
+		
+		member.setPass(pass1);
+		member.setEmail(emailId + "@" + emailDomain);
+		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		if(phone2.equals("") || phone3.equals("")) {
+			member.setPhone("");
+		} else {
+			member.setPhone(phone1 + "-" + phone2 + "-" + phone3);
+		}
+		member.setEmailGet(emailGet);
+		
+		// memberService를 통해서 회원 정보를 DB에 저장
+		memberService.addMember(member);
+		
+		// 회원가입이 완료되면 로그인 폼으로 리다이렉트
+		return "redirect:loginForm";
+	}
+	
 	// 회원 가입 폼에서 들어오는 중복 아이디 체크 요청을 처리하는 메서드
 	@RequestMapping("/overlapIdCheck")
 	public String overlapIdCheck(Model model, String id) {

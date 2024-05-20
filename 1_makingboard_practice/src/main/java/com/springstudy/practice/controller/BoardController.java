@@ -1,9 +1,13 @@
 package com.springstudy.practice.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springstudy.practice.domain.Board;
@@ -20,6 +26,8 @@ import com.springstudy.practice.service.BoardService;
 
 @Controller
 public class BoardController {
+	
+	private final static String DEFAULT_PATH = "/resources/upload";
 	
 	@Autowired
 	private BoardService boardService;
@@ -151,7 +159,57 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/writeProcess", method=RequestMethod.POST)
-	public String insertBoard(Board board) {
+	public String insertBoard(HttpServletRequest request, String title, String writer, String content, String pass,
+			@RequestParam(value="file1", required=false) MultipartFile multipartFile) throws IOException {
+		
+		System.out.println("originName : " + multipartFile.getOriginalFilename());
+		System.out.println("name : " + multipartFile.getName());
+		
+		Board board = new Board();
+		board.setTitle(title);
+		board.setWriter(writer);
+		board.setContent(content);
+		board.setPass(pass);
+		
+		if(!multipartFile.isEmpty()) {
+			String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
+			
+			UUID uid = UUID.randomUUID();
+			String saveName = uid.toString() + "_" + multipartFile.getOriginalFilename();
+			
+			File file = new File(filePath, saveName);
+			System.out.println("insertBoard - newName : " + file.getName());
+			
+			multipartFile.transferTo(file);
+			
+			board.setFile1(saveName);
+		}
+		boardService.insertBoard(board);
+		
+		return "redirect:boardList";
+	}
+	
+	public String addBoard(MultipartHttpServletRequest request) throws IOException {
+		MultipartFile multipartFile = request.getFile("file1");
+		System.out.println("originName : " + multipartFile.getOriginalFilename());
+		System.out.println("name : " + multipartFile.getName());
+		
+		Board board = new Board();
+		board.setTitle(request.getParameter("title"));
+		board.setWriter(request.getParameter("writer"));
+		board.setContent(request.getParameter("content"));
+		board.setPass(request.getParameter("pass"));
+		
+		if(!multipartFile.isEmpty()) {
+			String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
+			UUID uid = UUID.randomUUID();
+			String saveName = uid.toString() + "_" + multipartFile.getOriginalFilename();
+			
+			File file = new File(filePath, saveName);
+			System.out.println("addBoard - newName : " + file.getName());
+			multipartFile.transferTo(file);
+			board.setFile1(saveName);
+		}
 		boardService.insertBoard(board);
 		return "redirect:boardList";
 	}

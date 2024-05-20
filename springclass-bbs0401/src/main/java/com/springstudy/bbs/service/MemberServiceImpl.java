@@ -56,4 +56,22 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.addMember(member);
 	}
 
+	@Override
+	public boolean memberPassCheck(String id, String pass) {
+		String dbPass = memberDao.memberPassCheck(id);
+		boolean result = false;
+		
+		if(passwordEncoder.matches(pass, dbPass)) {
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		// 회원이 입력한 정보에서 중요정보는 비식별화 - 비밀번호를 암호화
+		member.setPass(passwordEncoder.encode(member.getPass()));
+		memberDao.updateMember(member);
+	}
+
 }
