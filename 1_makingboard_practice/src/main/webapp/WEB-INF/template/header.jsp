@@ -24,7 +24,7 @@
 					</li>
 					<li class="nav-item">
 						<c:if test="${not sessionScope.isLogin}">
-							<a class="nav-link" href="#">회원가입</a>
+							<a class="nav-link" href="joinForm">회원가입</a>
 						</c:if>
 						<c:if test="${sessionScope.isLogin}">
 							<a class="nav-link" href="#">정보수정</a>
