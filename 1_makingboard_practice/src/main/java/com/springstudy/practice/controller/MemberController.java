@@ -26,6 +26,38 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@RequestMapping("/joinResult")
+	public String joinResult(Model model, Member member, String pass1, String emailId, String emailDomain,
+			String mobile1, String mobile2, String mobile3, String phone1, String phone2, String phone3,
+			@RequestParam(value="emailGet", defaultValue="false") boolean emailGet) {
+		
+		member.setPass(pass1);
+		member.setEmail(emailId + "@" + emailDomain);
+		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		
+		if(phone2.equals("") || phone3.equals("")) {
+			member.setPhone("");
+		} else {
+			member.setPhone(phone1 + "-" + phone2 + "-" + phone3);
+		}
+		member.setEmailGet(Boolean.valueOf(emailGet));
+		
+		memberService.addMember(member);
+		System.out.println("joinResult : " + member.getName());
+		
+		return "redirect:loginForm";
+	}
+	
+	@RequestMapping("/overlapIdCheck")
+	public String overlapIdCheck(Model model, String id) {
+		boolean overlap = memberService.overlapIdCheck(id);
+		
+		model.addAttribute("id", id);
+		model.addAttribute("overlap", overlap);
+		
+		return "forward:WEB-INF/views/member/overlapIdCheck.jsp";
+	}
+	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(Model model, @RequestParam("userId") String id,
 			@RequestParam("pass") String pass,

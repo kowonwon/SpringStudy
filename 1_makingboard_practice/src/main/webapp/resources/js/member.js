@@ -26,7 +26,7 @@ $(function() {
 	
 	$("#pass1").on("keyup", inputCharReplace);
 	$("#pass2").on("keyup", inputCharReplace);
-	$("#emailid").on("keyup", inputCharReplace);
+	$("#emailId").on("keyup", inputCharReplace);
 	$("#emailDomain").on("keyup", inputEmailDomainReplace);
 	
 	$("#btnOverlapId").on("click", function() {
@@ -94,9 +94,9 @@ $(function() {
 	});
 	
 	function inputCharReplace() {
-		var regExp = /[%A-Za-z0-9]/gi;
-		if(regExp.test($(this).val())) {
-			alert("영문 대소문자, 숫자만 입력할 수 있습니다.");
+		let regExp = /[^A-Za-z0-9]/gi;
+		if(regExp.test($(this).val())) { // 영문 대소문자, 숫자가 아니면
+			alert("영문 대소문자와 숫자만 가능합니다.");
 			$(this).val($(this).val().replace(regExp, ""));
 		}
 	}

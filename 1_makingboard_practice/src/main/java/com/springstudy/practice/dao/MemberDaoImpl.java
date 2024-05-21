@@ -23,4 +23,8 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.selectOne(NAME_SPACE + ".getMember", id);
 	}
 
+	@Override
+	public void addMember(Member member) {
+			sqlSession.insert(NAME_SPACE + ".addMember", member);
+	}
 }
