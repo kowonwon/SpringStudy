@@ -207,7 +207,7 @@ function joinFormCheck() {
 		alert("이름이 입력되지 않았습니다.");
 		return false;
 	}
-	if(id.length <= 5) {
+	if(id.length < 5) {
 		alert("아이디는 5자 이상 입니다.");
 		return false;
 	}
