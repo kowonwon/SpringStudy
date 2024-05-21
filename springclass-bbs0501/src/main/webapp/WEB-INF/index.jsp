@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, inittial-scale=1">
 <title>Insert title here</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="resources/css/member.css" rel="stylesheet">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
 <script src="resources/js/member.js"></script>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.bbs.dao.BoardDao;
 import com.springstudy.bbs.domain.Board;
+import com.springstudy.bbs.domain.Reply;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -107,4 +108,19 @@ public class BoardServiceImpl implements BoardService {
 		boardDao.deleteBoard(no);
 	}
 
+	@Override
+	public List<Reply> replyList(int no) {
+		return boardDao.replyList(no);
+	}
+
+	@Override
+	public Map<String, Integer> recommend(int no, String recommend) {
+		boardDao.updateRecommend(no, recommend);
+		Board board = boardDao.getRecommend(no);
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("recommend", board.getRecommend());
+		map.put("thank", board.getThank());
+		return map;
+	}
 }

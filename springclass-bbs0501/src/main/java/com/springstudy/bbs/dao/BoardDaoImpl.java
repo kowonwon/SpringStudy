@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.bbs.domain.Board;
+import com.springstudy.bbs.domain.Reply;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
@@ -69,6 +70,24 @@ public class BoardDaoImpl implements BoardDao {
 	@Override
 	public void incrementReadCount(int no) {
 		sqlSession.update(NAME_SPACE + ".incrementReadCount", no);
+	}
+
+	@Override
+	public List<Reply> replyList(int no) {
+		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
+	}
+
+	@Override
+	public void updateRecommend(int no, String recommend) {
+		Map<String, Object> params = new HashMap<String, Object>();		
+		params.put("no", no);
+		params.put("recommend", recommend);
+		sqlSession.update(NAME_SPACE + ".updateRecommend", params);
+	}
+
+	@Override
+	public Board getRecommend(int no) {
+		return sqlSession.selectOne(NAME_SPACE + ".getRecommend", no);
 	}
 
 }

@@ -4,8 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.springstudy.bbs.domain.Board;
+import com.springstudy.bbs.domain.Reply;
 
 public interface BoardService {
+	
+	// 추천/땡큐를 업데이트 하고 갱신된 추천/땡큐 수를 반환하는 메서드
+	Map<String, Integer> recommend(int no, String recommend);
+	
+	// 게시글 번호에 해당하는 댓글 리스트를 반환하는 메서드
+	public abstract List<Reply> replyList(int no);
 	
 	// 게시글 리스트 - 테이블에 있는 게시 글 리스트를 읽어와 반환하는 메서드
 	public abstract Map<String, Object> boardList(

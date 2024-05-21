@@ -25,6 +25,21 @@
 	
 	<context:component-scan base-package="com.springstudy.bbs" />
 	<!--  /WEB-INF/views/  +  writeForm  + .jsp -->
+	
+	<beans:bean id="loginCheckInterceptor"
+		class="com.springstudy.bbs.interceptor.LoginCheckInterceptor" />
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/boardDetail" />
+			<mapping path="/add*" />
+			<mapping path="/write*" />
+			<mapping path="/update*" />
+			<mapping path="/memberUpdate*" />
+			<beans:ref bean="loginCheckInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 	<view-controller path="/writeForm" view-name="writeForm" />
 	
 	<view-controller path="/" view-name="redirect:/boardList" />
