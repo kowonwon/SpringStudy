@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spring MVC 게시판</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="resources/css/member.css" />
 <script src="resources/js/jquery-3.7.1.min.js"></script>
 <script src="resources/js/formcheck.js"></script>

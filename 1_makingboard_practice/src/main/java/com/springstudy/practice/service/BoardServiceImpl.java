@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.practice.dao.BoardDao;
 import com.springstudy.practice.domain.Board;
+import com.springstudy.practice.domain.Reply;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -102,5 +103,10 @@ public class BoardServiceImpl implements BoardService {
 			boardDao.incrementReadCount(no);
 		}
 		return boardDao.getBoard(no);
+	}
+
+	@Override
+	public List<Reply> replyList(int no) {
+		return boardDao.replyList(no);
 	}
 }

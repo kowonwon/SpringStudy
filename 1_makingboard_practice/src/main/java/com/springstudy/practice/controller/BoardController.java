@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springstudy.practice.domain.Board;
+import com.springstudy.practice.domain.Reply;
 import com.springstudy.practice.service.BoardService;
 
 @Controller
@@ -146,10 +147,12 @@ public class BoardController {
 		boolean searchOption = (type.equals("null") || keyword.equals("null")) ? false : true;
 		
 		Board board = boardService.getBoard(no, true);
-		
 		model.addAttribute("board", board);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("searchOption", searchOption);
+		
+		List<Reply> replyList = boardService.replyList(no);
+		model.addAttribute("replyList", replyList);
 		
 		if(searchOption) {
 			model.addAttribute("type", type);

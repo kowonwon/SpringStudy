@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.practice.domain.Board;
+import com.springstudy.practice.domain.Reply;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -70,6 +71,11 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public void deleteBoard(int no) {
 		sqlSession.delete(NAME_SPACE + ".deleteBoard", no);
+	}
+
+	@Override
+	public List<Reply> replyList(int no) {
+		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
 	}
 
 }

@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.springstudy.practice.domain.Board;
+import com.springstudy.practice.domain.Reply;
 
 public interface BoardService {
+	
+	List<Reply> replyList(int no);
 	
 	public abstract Board getBoard(int no, boolean isCount);
 

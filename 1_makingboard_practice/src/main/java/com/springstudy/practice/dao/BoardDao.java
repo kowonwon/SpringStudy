@@ -3,8 +3,11 @@ package com.springstudy.practice.dao;
 import java.util.List;
 
 import com.springstudy.practice.domain.Board;
+import com.springstudy.practice.domain.Reply;
 
 public interface BoardDao {
+	
+	List<Reply> replyList(int no);
 	
 	public abstract void incrementReadCount(int no);
 	
