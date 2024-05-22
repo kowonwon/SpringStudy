@@ -57,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean memberPassCehck(String id, String pass) {
+	public boolean memberPassCheck(String id, String pass) {
 		String dbPass = memberDao.memberPassCehck(id);
 		boolean result = false;
 		

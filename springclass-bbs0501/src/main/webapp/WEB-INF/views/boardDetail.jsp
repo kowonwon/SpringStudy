@@ -98,6 +98,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 이 위치로 폼을 이동 -->
 		<!-- 댓글 헤더 -->
 		<div class="row" id="replyTitle">
 			<div class="col border p-2 text-center bg-dark text-white">
@@ -122,9 +123,9 @@
 										<span class="me-3">
 											<fmt:formatDate value="${reply.regDate}" pattern="yyyy-MM-dd HH:mm:ss" />
 										</span>
-										<button class="modifyReply btn btn-outline-success btn-sm"><i class="bi bi-journal-text"> 수정</i></button>
-										<button class="deleteReply btn btn-outline-warning btn-sm"><i class="bi bi-trash3"> 삭제</i></button>
-										<button class="reportReply btn btn-outline-danger btn-sm"><i class="bi bi-megaphone"> 신고</i></button>
+										<button class="modifyReply btn btn-outline-success btn-sm" data-no="${reply.no}"><i class="bi bi-journal-text"> 수정</i></button>
+										<button class="deleteReply btn btn-outline-warning btn-sm" data-no="${reply.no}"><i class="bi bi-trash3"> 삭제</i></button>
+										<button class="reportReply btn btn-outline-danger btn-sm" data-no="${reply.no}"><i class="bi bi-megaphone"> 신고</i></button>
 									</div>
 								</div>
 								<!-- 댓글 내용 영역 -->
@@ -148,8 +149,29 @@
 			</div>
 		</c:if>
 		<!-- 댓글 쓰기 폼 영역 -->
-		<div class="row">
+		<div class="row my-3 d-none" id="replyForm">
 			<div class="col">
+				<form name="replyWriteForm" id="replyWriteForm">
+					<input type="hidden" name="bbsNo" value="${board.no}">
+					<input type="hidden" name="replyWriter" value="${sessionScope.member.id}">
+					<div class="row bg-light my-3 p-3 border">
+						<div class="col">
+							<div class="row">
+								<div class="col text-center">
+									<span>악의적인 댓글은 예고 없이 삭제될 수 있으며 글쓰기 제한과 아이디 삭제됩니다.</span>
+								</div>
+							</div>
+							<div class="row my-3">
+								<div class="col-md-10">
+									<textarea name="replyContent" id="replyContent" class="form-control" rows="4"></textarea>
+								</div>
+								<div class="col-md">
+									<input type="submit" value="댓글쓰기" class="btn btn-primary w-100 h-100" id="replyWriteButton">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

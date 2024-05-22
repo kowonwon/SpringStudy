@@ -8,6 +8,9 @@ import com.springstudy.bbs.domain.Reply;
 
 public interface BoardService {
 	
+	// 댓글 쓰기 처리 메서드
+	void addReply(Reply reply);
+	
 	// 추천/땡큐를 업데이트 하고 갱신된 추천/땡큐 수를 반환하는 메서드
 	Map<String, Integer> recommend(int no, String recommend);
 	

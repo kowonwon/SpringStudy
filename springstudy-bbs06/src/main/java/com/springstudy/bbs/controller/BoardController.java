@@ -33,7 +33,7 @@ import com.springstudy.bbs.service.BoardService;
 public class BoardController {
 	
 	// 업로드한 파일을 저장할 폴더 위치를 상수로 선언하고 있다.
-	private final static String DEFAULT_PATH = "/resources/upload/";
+	private final static String DEFAULT_PATH = "/resources/upload/";	
 	
 	/* 인스턴스 필드에 @Autowired annotation을 사용하면 접근지정자가 
 	 * private이고 setter 메서드가 없다 하더라도 문제없이 주입 된다.

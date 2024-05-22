@@ -90,4 +90,9 @@ public class BoardDaoImpl implements BoardDao {
 		return sqlSession.selectOne(NAME_SPACE + ".getRecommend", no);
 	}
 
+	@Override
+	public void addReply(Reply reply) {
+		sqlSession.insert(NAME_SPACE + ".addReply", reply);
+	}
+
 }

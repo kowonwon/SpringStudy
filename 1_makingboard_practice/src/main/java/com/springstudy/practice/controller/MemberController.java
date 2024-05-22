@@ -26,6 +26,11 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@RequestMapping("/memberUpdateForm")
+	public String updateForm(Model model, HttpSession session) {
+		return "member/memberUpdateForm";
+	}
+	
 	@RequestMapping("/joinResult")
 	public String joinResult(Model model, Member member, String pass1, String emailId, String emailDomain,
 			String mobile1, String mobile2, String mobile3, String phone1, String phone2, String phone3,

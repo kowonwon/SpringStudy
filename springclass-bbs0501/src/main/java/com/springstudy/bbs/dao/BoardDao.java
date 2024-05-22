@@ -7,6 +7,9 @@ import com.springstudy.bbs.domain.Reply;
 
 public interface BoardDao {
 	
+	//DB에 댓글을 추가하는 메서드
+	void addReply(Reply reply);
+	
 	// 게시글 번호에 해당하는 추천/땡큐를 업데이트하는 메서드
 	void updateRecommend(int no, String recommend);
 	

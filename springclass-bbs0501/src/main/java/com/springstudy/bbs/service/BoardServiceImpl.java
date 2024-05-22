@@ -123,4 +123,9 @@ public class BoardServiceImpl implements BoardService {
 		map.put("thank", board.getThank());
 		return map;
 	}
+
+	@Override
+	public void addReply(Reply reply) {
+		boardDao.addReply(reply);
+	}
 }

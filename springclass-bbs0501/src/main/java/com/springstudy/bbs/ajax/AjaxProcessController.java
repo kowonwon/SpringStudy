@@ -26,7 +26,7 @@ public class AjaxProcessController {
 	public Map<String, Boolean> memberPassCheck(String id, String pass) {
 		// {[ {}, {} ], {}, {}}
 		Map<String, Boolean> resultMap = new HashMap<String, Boolean>();
-		boolean result = memberService.memberPassCehck(id, pass);
+		boolean result = memberService.memberPassCheck(id, pass);
 		resultMap.put("result", result);
 		
 		return resultMap;
