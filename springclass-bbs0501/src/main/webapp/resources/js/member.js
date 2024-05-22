@@ -64,7 +64,7 @@ $(function() {
 		let isIdCheck = $("#isIdCheck").val();
 		
 		if(isIdCheck == 'false') {
-			alert("아이디 중복검사가 않되었습니다.");
+			alert("아이디 중복검사가 안되었습니다.");
 			return false;
 		}
 		

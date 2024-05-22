@@ -1,4 +1,47 @@
 $(function() {
+	
+	$("#btnPassCheck").click(function() {
+		var oldId = $("#id").val();
+		var oldPass = $("#oldPass").val();
+		
+		if($.trim(oldPass).length == 0) {
+			alert("기존 비밀번호를 입력해주세요.");
+			return false;
+		}
+		var data = "id=" + oldId + "&pass=" + oldPass;
+		console.log("data : " + data);
+		
+		$.ajax({
+			"url": "passCheck.ajax",
+			"type": "get",
+			"data": data,
+			"dataType": "json",
+			"success": function(resData) {
+				if(resData.result) {
+					alert("비밀번호가 확인되었습니다.\n비밀번호를 수정해주세요.");
+					$("#btnPassCheck").prop("disabled", true);
+					$("#oldPass").prop("readonly", true);
+					$("#pass1").focus();
+				} else {
+					alert("비밀번호가 다릅니다.\n비밀번호를 다시 확인해주세요.");
+					$("#oldPass").val("").focus();
+				}
+			},
+			"error": function() {
+				console.log("error");
+			}
+		});
+	});
+	
+	$("#memberUpdateForm").on("submit", function() {
+		if(! $("#btnPassCheck").prop("disabled")) {
+			alert("기존 비밀번호를 확인하고 비밀번호 확인 버튼을 클릭해 주세요.");
+			return false;
+		}
+		
+		return joinFormCheck();
+	});
+	
 	$("#loginForm").on("submit", function() {
 		
 		let id = $("#userId").val();
@@ -18,7 +61,7 @@ $(function() {
 	
 	$("#id").on("keyup", function() {
 		var regExp = /[^A-Za-z0-9]/gi;
-		if(regExp.text($(this).val())) {
+		if(regExp.test($(this).val())) {
 			alert("영문 대소문자, 숫자만 입력할 수 있습니다.");
 			$(this).val($(this).val().replace(regExp, ""));
 		}

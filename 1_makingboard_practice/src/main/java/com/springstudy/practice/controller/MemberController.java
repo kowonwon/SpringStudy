@@ -26,6 +26,30 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@RequestMapping("/memberUpdateResult")
+	public String memberUpdateInfo(Model model, Member member, String pass1, String emailId, String emailDomain,
+			String mobile1, String mobile2, String mobile3, String phone1, String phone2, String phone3,
+			@RequestParam(value="emailGet", defaultValue="false") boolean emailGet) {
+		
+		member.setPass(pass1);
+		member.setEmail(emailId + "@" + emailDomain);
+		member.setMobile(mobile1 + "-" + mobile2 + "-" + mobile3);
+		
+		if(phone2.equals("") || phone3.equals("")) {
+			member.setPhone("");
+		} else {
+			member.setPhone(phone1 + "-" + phone2 + "-" + phone3);
+		}
+		member.setEmailGet(Boolean.valueOf(emailGet));
+		
+		memberService.updateMember(member);
+		System.out.println("memberUpdateResult : " + member.getId());
+		
+		model.addAttribute("member", member);
+		
+		return "redirect:boardList";
+	}
+	
 	@RequestMapping("/memberUpdateForm")
 	public String updateForm(Model model, HttpSession session) {
 		return "member/memberUpdateForm";
