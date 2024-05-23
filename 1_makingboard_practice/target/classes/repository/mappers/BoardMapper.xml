@@ -23,6 +23,15 @@
 
 	<mapper namespace="com.springstudy.practice.mapper.BoardMapper" >
 	
+	<update id="updateReply" parameterType="Reply">
+		UPDATE reply SET reply_content = #{replyConent}, reg_date = SYSDATE() WHERE no = #{no}
+	</update>
+	
+	<insert id="addReply" parameterType="Reply">
+		INSERT INTO reply(bbs_no, reply_content, reply_writer, reg_date)
+		VALUES(#{bbsNo}, #{replyContent}, #{replyWriter}, SYSDATE())
+	</insert>
+	
 	<update id="updateRecommend">
 		UPDATE springbbs
 		SET

@@ -8,6 +8,10 @@ import com.springstudy.practice.domain.Reply;
 
 public interface BoardService {
 	
+	public void updateReply(Reply reply);
+	
+	public void addReply(Reply reply);
+	
 	public Map<String, Integer> recommend(int no, String recommend);
 	
 	List<Reply> replyList(int no);

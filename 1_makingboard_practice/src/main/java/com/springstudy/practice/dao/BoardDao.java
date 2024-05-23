@@ -7,6 +7,10 @@ import com.springstudy.practice.domain.Reply;
 
 public interface BoardDao {
 	
+	public void updateReply(Reply reply);
+	
+	public void addReply(Reply reply);
+	
 	void updateRecommend(int no, String recommend);
 	
 	Board getRecommend(int no);
