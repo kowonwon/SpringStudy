@@ -109,4 +109,15 @@ public class BoardServiceImpl implements BoardService {
 	public List<Reply> replyList(int no) {
 		return boardDao.replyList(no);
 	}
+
+	@Override
+	public Map<String, Integer> recommend(int no, String recommend) {
+		
+		boardDao.updateRecommend(no, recommend);
+		Board board = boardDao.getRecommend(no);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("recommend", board.getRecommend());
+		map.put("thank", board.getThank());
+		return map;
+	}
 }

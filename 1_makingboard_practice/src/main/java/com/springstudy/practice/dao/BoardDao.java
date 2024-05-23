@@ -7,6 +7,10 @@ import com.springstudy.practice.domain.Reply;
 
 public interface BoardDao {
 	
+	void updateRecommend(int no, String recommend);
+	
+	Board getRecommend(int no);
+	
 	List<Reply> replyList(int no);
 	
 	public abstract void incrementReadCount(int no);

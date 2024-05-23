@@ -8,6 +8,8 @@ import com.springstudy.practice.domain.Reply;
 
 public interface BoardService {
 	
+	public Map<String, Integer> recommend(int no, String recommend);
+	
 	List<Reply> replyList(int no);
 	
 	public abstract Board getBoard(int no, boolean isCount);

@@ -78,4 +78,17 @@ public class BoardDaoImpl implements BoardDao{
 		return sqlSession.selectList(NAME_SPACE + ".replyList", no);
 	}
 
+	@Override
+	public void updateRecommend(int no, String recommend) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("no", no);
+		params.put("recommend", recommend);
+		sqlSession.update(NAME_SPACE + ".updateRecommend", params);
+	}
+
+	@Override
+	public Board getRecommend(int no) {
+		return sqlSession.selectOne(NAME_SPACE + ".getRecommend", no);
+	}
+
 }
