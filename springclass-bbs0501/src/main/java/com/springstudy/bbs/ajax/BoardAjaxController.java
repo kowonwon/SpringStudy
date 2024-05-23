@@ -1,5 +1,6 @@
 package com.springstudy.bbs.ajax;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,20 @@ public class BoardAjaxController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@PostMapping("/replyDelete.ajax")
+	@ResponseBody
+	public List<Reply> deleteReply(int no, int bbsNo) {
+		boardService.deleteReply(no);
+		return boardService.replyList(bbsNo);
+	}
+	
+	@PostMapping("/replyUpdate.ajax")
+	@ResponseBody
+	public List<Reply> updateReply(Reply reply) {
+		boardService.updateReply(reply);
+		return boardService.replyList(reply.getBbsNo());
+	}
 	
 	@PostMapping("/replyWrite.ajax")
 	@ResponseBody

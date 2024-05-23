@@ -95,4 +95,13 @@ public class BoardDaoImpl implements BoardDao {
 		sqlSession.insert(NAME_SPACE + ".addReply", reply);
 	}
 
+	@Override
+	public void updateReply(Reply reply) {
+		sqlSession.update(NAME_SPACE + ".updateReply", reply);
+	}
+
+	@Override
+	public void deleteReply(int no) {
+		sqlSession.delete(NAME_SPACE + ".deleteReply", no);
+	}
 }

@@ -100,9 +100,16 @@
 		</div>
 		<!-- 이 위치로 폼을 이동 -->
 		<!-- 댓글 헤더 -->
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-success" id="stop">타이머 정지</button>
+				<button class="btn btn-primary" id="start">타이머 시작</button>
+			</div>
+		</div>
 		<div class="row" id="replyTitle">
 			<div class="col border p-2 text-center bg-dark text-white">
 				<h3 class="fs-4">이 글에 대한 댓글 리스트</h3>
+				<h3 id="time">현재 시각 : </h3>
 			</div>
 		</div>
 		<!-- 댓글 리스트 영역 -->

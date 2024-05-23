@@ -8,6 +8,12 @@ import com.springstudy.bbs.domain.Reply;
 
 public interface BoardService {
 	
+	// 댓글 삭제를 처리하는 메서드
+	void deleteReply(int no);
+	
+	// 댓글 수정 처리 메서드
+	void updateReply(Reply reply);
+	
 	// 댓글 쓰기 처리 메서드
 	void addReply(Reply reply);
 	
