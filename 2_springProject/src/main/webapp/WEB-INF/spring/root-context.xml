@@ -17,7 +17,7 @@
 		<property name="mapperLocations"
 			value="classpath:repository/mappers/**/*Mapper.xml" />
 		<property name="typeAliasesPackage"
-			value="com.springstudy.project.controller.domain" />
+			value="com.springstudy.project.domain" />
 	</bean>
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
@@ -26,6 +26,4 @@
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
-		
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>

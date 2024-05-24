@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>메인페이지</title>
+<title>인덱스</title>
 <link href="resources/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script src="resources/js/jquery-3.7.1.min.js"></script>
 </head>
