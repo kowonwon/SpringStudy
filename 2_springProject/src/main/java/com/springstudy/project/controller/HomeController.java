@@ -1,4 +1,4 @@
-package com.springstudy.project;
+package com.springstudy.project.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
