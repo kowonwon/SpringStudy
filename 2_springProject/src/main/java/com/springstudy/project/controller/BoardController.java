@@ -14,7 +14,7 @@ import com.springstudy.project.domain.Budget;
 @Controller
 public class BoardController {
 
-	@Autowired
+	@Autowired(required=false)
 	private BoardService boardService;
 	
 	public void setBoardService(BoardService boardService) {

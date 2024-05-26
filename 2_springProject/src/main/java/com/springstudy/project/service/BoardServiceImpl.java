@@ -11,7 +11,7 @@ import com.springstudy.project.domain.Budget;
 @Service
 public class BoardServiceImpl implements BoardService {
 	
-	@Autowired
+	@Autowired(required=false)
 	private BoardDao boardDao;
 	
 	public void setBoardDao(BoardDao boardDao) {
