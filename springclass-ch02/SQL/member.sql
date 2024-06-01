@@ -1,4 +1,5 @@
-﻿use spring;
+
+use spring;
 
 DROP TABLE IF EXISTS member;
 CREATE TABLE IF NOT EXISTS member(	
