@@ -79,7 +79,7 @@ public class MemberController {
 		memberService.addMember(member);
 		
 		// 회원가입이 완료되면 로그인 폼으로 리다이렉트 시킨다.
-		return "redirect:loginForm";
+		return "redirect:boardList";
 	}
 	
 	// 회원 가입 폼에서 들어오는 중복 아이디 체크 요청을 처리하는 메서드
