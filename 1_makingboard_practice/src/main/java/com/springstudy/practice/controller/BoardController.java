@@ -45,13 +45,11 @@ public class BoardController {
 		String filePath = request.getServletContext().getRealPath(DEFAULT_PATH);
 		
 		File file = new File(filePath, fileName);
-		System.out.println("file.getName() : " + file.getName());
 		
 		response.setContentType("application/download; charset=UTF-8");
 		response.setContentLength((int) file.length());
 		
 		fileName = URLEncoder.encode(file.getName(), "UTF-8");
-		System.out.println("다운로드 fileName : " + fileName);
 		
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
 		
