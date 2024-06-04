@@ -142,7 +142,7 @@
 			<c:if test="${empty replyList}">
 				<div class="row mb-5" id="replyList">
 					<div class="col text-center border p-5">
-						<div>댓글이 없습니다.</div>
+						<div>댓글이 없습니다. sql data를 확인하십시오.</div>
 					</div>
 				</div>
 			</c:if>
@@ -156,7 +156,7 @@
 							<div class="col">
 								<div class="row">
 									<div class="col text=center">
-										<span>악의적인 댓글 x</span>
+										<span>악의적인 댓글은 알림 없이 삭제 처리됩니다.</span>
 									</div>
 								</div>
 								<div class="row my-3">
