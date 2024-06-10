@@ -3,6 +3,7 @@ package com.springstudy.after.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.after.domain.Board;
@@ -11,6 +12,8 @@ import com.springstudy.after.domain.Board;
 public class BoardDaoImpl implements BoardDao{
 
 	private final String NAME_SPACE = "com.springstudy.after.mapper.BoardMapper";
+	
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
