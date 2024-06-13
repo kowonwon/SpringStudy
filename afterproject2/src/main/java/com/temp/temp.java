@@ -12,9 +12,8 @@ public class temp {
 		String password = "12345678";
 		
 		try (Connection connection = DriverManager.getConnection(url, username, password)) {
-			String query = "SELECT * FROM posts where writer = ?";
+			String query = "SELECT * FROM temp_memList where id = lemon";
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setInt(1, 1);
 			
 			ResultSet rs = ps.executeQuery();
 			
