@@ -25,13 +25,39 @@
     <style>      	
     </style>
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<!-- iamport.payment.js -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 </head>
 <body>
 	<div class="container">
 		<%@ include file="template/header.jsp" %>
 		<jsp:include page="${ param.body }" />
+		<button id="payButton">카카오페이 결제</button>
 		<%@ include file="template/footer.jsp" %>
 	</div>
-    <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>	
+    <script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
+    <script>
+    	IMP.request_pay(
+    	  {
+    	    pg: "kakaopay.{CID}",
+    	    pay_method: "card", // 생략가
+    	    merchant_uid: "order_no_0001", // 상점에서 생성한 고유 주문번호
+    	    name: "주문명:결제테스트",
+    	    amount: 1004,
+    	    buyer_email: "test@portone.io",
+    	    buyer_name: "구매자이름",
+    	    buyer_tel: "010-1234-5678",
+    	    buyer_addr: "서울특별시 강남구 삼성동",
+    	    buyer_postcode: "123-456",
+    	    m_redirect_url: "{모바일에서 결제 완료 후 리디렉션 될 URL}",
+    	  },
+    	  function (rsp) {
+    	    // callback 로직
+    	    /* ...중략... */
+    	  },
+    	);
+    </script>	
 </body>
 </html>
