@@ -17,7 +17,7 @@ var makeMerchantUid = `$hours` + `$minutes` + `$seconds` + `$milliseconds`;
 
 function kakaoPay(useremail, username) {
   if (confirm("구매 하시겠습니까?")) { // 구매 클릭시 한번 더 확인하기
-       const emoticonName = 'kakaoEmoticon'
+       const emoticonName = 'whatelse'
 
        IMP.init("imp62227326"); // 가맹점 식별코드
        IMP.request_pay({
