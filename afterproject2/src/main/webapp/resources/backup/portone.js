@@ -8,6 +8,7 @@ buyButton.setAttribute('onclick', `kakaoPay('${user_email}', '${username}')`)
 
 var IMP = window.IMP;
 
+// 결제고유번호 생성
 var today = new Date();
 var hours = today.getHours(); // 시
 var minutes = today.getMinutes();  // 분
@@ -20,7 +21,7 @@ function kakaoPay(useremail, username) {
         if (localStorage.getItem("access")) { // 회원만 결제 가능
             const emoticonName = document.getElementById('title').innerText
 
-            IMP.init("가맹점식별코드"); // 가맹점 식별코드
+            IMP.init("imp62227326"); // 가맹점 식별코드
             IMP.request_pay({
                 pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
                 pay_method: 'card', // 결제 방식
@@ -30,16 +31,11 @@ function kakaoPay(useremail, username) {
                 //구매자 정보 ↓
                 buyer_email: `${useremail}`,
                 buyer_name: `${username}`,
-                // buyer_tel : '010-1234-5678',
-                // buyer_addr : '서울특별시 강남구 삼성동',
-                // buyer_postcode : '123-456'
             }, async function (rsp) { // callback
                 if (rsp.success) { //결제 성공시
                     console.log(rsp);
-					...
-                    //결제 성공시 프로젝트 DB저장 요청
-                    ...
 
+                    //결제 성공시 프로젝트 DB저장 요청
                     if (response.status == 200) { // DB저장 성공시
                         alert('결제 완료!')
                         window.location.reload();
@@ -58,4 +54,4 @@ function kakaoPay(useremail, username) {
     } else { // 구매 확인 알림창 취소 클릭시 돌아가기
         return false;
     }
-}}
+}
