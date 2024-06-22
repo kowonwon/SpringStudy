@@ -10,13 +10,28 @@
   <style>      	
   </style>
 	<!-- 포트원 결제 -->
-  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
 </head>
 <body>
 	<div class="container">
 		<%@ include file="template/header.jsp" %>
 		<jsp:include page="${ param.body }" />
-		<button id="payment">카카오페이 결제</button>
+		<button onclick="requestPayment()">결제하기</button>
+		<script type="text/javascript">
+			const data = {
+		    storeId: 'what?',
+		    channelKey: 'what?',
+		    orderName: '상품명',
+		    totalAmount: 100,
+		    currency: 'CURRENCY_KRW',
+		    payMethod: 'CARD'
+		  };
+
+		  function requestPayment() {
+		    const response = await PromiseRejectionEvent.requestPayment(data);
+		    console.log(response);
+		  }
+		</script>
 		<%@ include file="template/footer.jsp" %>
 	</div>
 	<script src="resources/bootstrap/bootstrap.bundle.min.js"></script>
