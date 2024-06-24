@@ -9,6 +9,11 @@ const onClickPay = () => {
 		name: "라면",
 		buyer_email: "gildong@gmail.com",
     buyer_name: "홍길동"
+	},
+	async (response) => {
+		if(response.error_code != null) {
+			return alert('결제에 실패했습니다. 에러 내용:')
+		}
 	});
 };
 

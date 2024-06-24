@@ -31,10 +31,15 @@ function kg_request_pay() {
     if(rsp.sucess) { // 결제 성공시
       var msg = '결제 완료';
       var result = {
-        "merchant_uid" : rsp.merchant_uid,
-
+        "merchantUid": "merchant_uid(db)",
+        "memberId": "memberId(db"
       }
     }
+    console.log(result);
+
+    $.ajax({
+      url: 'insertKaK'
+    })
   })
 
 }
