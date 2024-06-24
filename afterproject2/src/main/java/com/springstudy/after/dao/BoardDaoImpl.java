@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.springstudy.after.domain.Board;
+import com.springstudy.after.domain.Payment;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -41,5 +42,10 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void deleteBoard(int no) {
+	}
+
+	@Override
+	public void insertPayment(Payment payment) {
+		sqlSession.insert(NAME_SPACE + ".insertPayment", payment);
 	}
 }

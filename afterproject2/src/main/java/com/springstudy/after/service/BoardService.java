@@ -3,6 +3,7 @@ package com.springstudy.after.service;
 import java.util.List;
 
 import com.springstudy.after.domain.Board;
+import com.springstudy.after.domain.Payment;
 
 public interface BoardService {
 	List<Board> boardList();
@@ -11,4 +12,6 @@ public interface BoardService {
 	boolean isPassCheck(int no, String pass);
 	void updateBoard(Board board);
 	void deleteBoard(int no);
+	
+	void insertPayment(Payment payment);
 }
