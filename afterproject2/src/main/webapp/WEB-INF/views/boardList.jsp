@@ -7,6 +7,24 @@
 	<div class="col">
 		<div class="row text-center">
 			<div class="col">
+				<h2 class="fs-3 fw-bold">결제하기</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h5>상품</h5>
+				<p>가격: 1000</p>
+				<p>강의번호: 1001</p>
+			</div>
+		</div>
+		<div class="row">
+			<form class="col">
+				<input type="hidden" name="price" id="price" value="1000" />
+				<input type="hidden" name="lectureId" id="lectureId" value="1001"/>
+			</form>
+		</div>
+		<div class="row text-center">
+			<div class="col">
 				<h2 class="fs-3 fw-bold">게시 글 리스트</h2>
 			</div>
 		</div>  		

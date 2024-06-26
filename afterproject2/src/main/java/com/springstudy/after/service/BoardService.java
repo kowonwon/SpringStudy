@@ -3,6 +3,7 @@ package com.springstudy.after.service;
 import java.util.List;
 
 import com.springstudy.after.domain.Board;
+import com.springstudy.after.domain.Lecture;
 import com.springstudy.after.domain.Payment;
 
 public interface BoardService {
@@ -14,4 +15,5 @@ public interface BoardService {
 	void deleteBoard(int no);
 	
 	void insertPayment(Payment payment);
+	Lecture getLecture(int lectureId);
 }

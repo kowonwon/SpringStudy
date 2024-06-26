@@ -8,6 +8,10 @@
 		SELECT * FROM springbbs ORDER BY no DESC
 	</select>
 	
+	<select id="getLecture" resultType="Lecture">
+		SELECT * FROM lecture WHERE lecture_id = #{lectureId}
+	</select>
+	
 	<insert id="insertPayment" parameterType="Payment" >
 		INSERT INTO payment(pay_code AS payCode, pay_date AS payDate, pay_way AS payWay,
 			price, student_id, lecture_id)

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springstudy.after.dao.BoardDao;
 import com.springstudy.after.domain.Board;
+import com.springstudy.after.domain.Lecture;
 import com.springstudy.after.domain.Payment;
 
 @Service
@@ -46,5 +47,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void insertPayment(Payment payment) {
 		boardDao.insertPayment(payment);
+	}
+
+	@Override
+	public Lecture getLecture(int lectureId) {
+		boardDao.getLecture(lectureId);
+		return null;
 	}
 }
